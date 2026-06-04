@@ -9,20 +9,6 @@ on:
 
 jobs:
   ci-express:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci
-      - name: Run tests
-        run: npm test
-  
+    uses: TP-meditrack-SS-Org/shared-workflow-ci/.github/workflows/ci-express.yml@main
+    with:
+      node-version: "20"
