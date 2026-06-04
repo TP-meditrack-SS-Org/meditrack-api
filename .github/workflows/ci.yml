@@ -1,0 +1,16 @@
+name: API CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  ci:
+    uses: TP-meditrack-SS-Org/shared-workflow-ci/.github/workflows/node-ci.yml@main
+    with:
+      node-version: "20"
+      install-command: "npm ci"
+      lint-command: "npm run lint"
+      test-command: "npm run test"
