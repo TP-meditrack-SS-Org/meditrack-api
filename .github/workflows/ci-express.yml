@@ -13,3 +13,22 @@ jobs:
     secrets: inherit
     with:
       node-version: "20"
+
+  check-front-staging-secret:
+    name: Check staging secret exposure
+    needs: ci-express
+    runs-on: ubuntu-latest
+    environment: staging
+
+    steps:
+      - name: Check staging secrets availability
+        run: |
+          if [ -z "${{ secrets.STAGING_API_KEY }}" ]; then
+            echo "STAGING_API_KEY is not exposed in staging."
+            exit 1
+          fi
+          if [ -z "${{ secrets.STAGING_DATABASE_URL }}" ]; then
+            echo "STAGING_DATABASE_URL is not exposed in staging."
+            exit 1
+          fi
+          echo "STAGING_API_KEY and STAGING_DATABASE_URL are exposed in staging."
