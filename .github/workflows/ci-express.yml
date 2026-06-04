@@ -10,5 +10,6 @@ on:
 jobs:
   ci-express:
     uses: TP-meditrack-SS-Org/shared-workflow-ci/.github/workflows/ci-express.yml@main
+    secrets: inherit
     with:
       node-version: "20"
