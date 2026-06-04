@@ -5,7 +5,12 @@ on:
     branches:
       - main
   pull_request:
+  workflow_dispatch:
 
 jobs:
   ci-express:
-    uses: TP-meditrack-SS-Org/shared-workflow-ci/.github/workflows/ci-express.yml@main
+    - name: call shared setup workflow
+      uses: TP-meditrack-SS-Org/shared-workflow-ci/.github/workflows/ci-express.yml@main
+    - name: Run tests
+      run: npm test
+  
